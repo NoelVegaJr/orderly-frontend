@@ -9,9 +9,7 @@ import { useRouter } from 'next/router';
 import { Session } from 'next-auth';
 import { UserContext } from '../../context/user';
 
-interface ICreateUsernameProps {
-  session: Session;
-}
+interface ICreateUsernameProps {}
 
 const CreateUsername: React.FunctionComponent<ICreateUsernameProps> = (
   session

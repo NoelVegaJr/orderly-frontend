@@ -34,7 +34,7 @@ const Auth: React.FunctionComponent<IAuthProps> = ({ session }) => {
     return (
       <div className='h-screen bg-slate-900  text-white flex flex-col justify-center p-6'>
         {session ? (
-          <CreateUsername session={session} />
+          <CreateUsername />
         ) : (
           <div className='bg-slate-800/40 w-full p-6  rounded-lg border border-gray-700 max-w-xl mx-auto'>
             <p className='text-3xl text-center mb-12'>Sign in</p>
