@@ -11,7 +11,7 @@ const wsLink =
     ? new GraphQLWsLink(
         createClient({
           // url: 'ws://localhost:4005/graphql',
-          url: NEXT_PUBLIC_GRAPHQL_URI,
+          url: `ws://${NEXT_PUBLIC_GRAPHQL_URI}/graphql`,
           connectionParams: async () => ({
             session: await getSession(),
           }),
@@ -19,9 +19,13 @@ const wsLink =
       )
     : null;
 
+const uri = `${
+  NEXT_PUBLIC_GRAPHQL_URI?.includes('localhost') ? 'http' : 'https'
+}://${NEXT_PUBLIC_GRAPHQL_URI}/graphql`;
+
 const httpLink = new HttpLink({
   // uri: `http://localhost:4005/graphql`,
-  uri: 'https://orderly-production.up.railway.app/graphql',
+  uri,
   credentials: 'include',
 });
 
