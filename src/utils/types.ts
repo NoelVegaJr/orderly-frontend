@@ -7,6 +7,7 @@ export interface CreateUsernameData {
 
 export interface CreateUsernameVariables {
   username: string;
+  id: string;
 }
 
 export interface SearchUsersData {

@@ -6,13 +6,19 @@ import UserOperations from '../../graphql/operations/user';
 import { CreateUsernameData, CreateUsernameVariables } from '../../utils/types';
 import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
+import { Session } from 'next-auth';
+import { UserContext } from '../../context/user';
 
-interface ICreateUsernameProps {}
+interface ICreateUsernameProps {
+  session: Session;
+}
 
 const CreateUsername: React.FunctionComponent<ICreateUsernameProps> = (
-  props
+  session
 ) => {
+  const userCtx = React.useContext(UserContext);
   const usernameInputRef = useRef<HTMLInputElement | null>(null);
+
   const [createUsername, { loading, error }] = useMutation<
     CreateUsernameData,
     CreateUsernameVariables
@@ -31,7 +37,7 @@ const CreateUsername: React.FunctionComponent<ICreateUsernameProps> = (
     }
     console.log(username);
     const { data } = await createUsername({
-      variables: { username: username },
+      variables: { username: username, id: userCtx!.id },
     });
 
     console.log(data);
