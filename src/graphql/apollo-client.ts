@@ -11,7 +11,9 @@ const wsLink =
     ? new GraphQLWsLink(
         createClient({
           // url: 'ws://localhost:4005/graphql',
-          url: `ws://${NEXT_PUBLIC_GRAPHQL_URI}/graphql` as string,
+          url: `${
+            NEXT_PUBLIC_GRAPHQL_URI?.includes('localhost') ? 'ws' : 'wss'
+          }://${NEXT_PUBLIC_GRAPHQL_URI}/graphql` as string,
           connectionParams: async () => ({
             session: await getSession(),
           }),
