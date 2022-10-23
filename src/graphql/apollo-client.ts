@@ -26,7 +26,7 @@ const uri = `${
 const httpLink = new HttpLink({
   // uri: `http://localhost:4005/graphql`,
   uri,
-  //credentials: 'include',
+  credentials: 'include',
 });
 
 const link =
