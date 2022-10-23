@@ -11,7 +11,7 @@ const wsLink =
     ? new GraphQLWsLink(
         createClient({
           // url: 'ws://localhost:4005/graphql',
-          url: `ws://${NEXT_PUBLIC_GRAPHQL_URI}/graphql`,
+          url: `ws://${NEXT_PUBLIC_GRAPHQL_URI}/graphql` as string,
           connectionParams: async () => ({
             session: await getSession(),
           }),
@@ -21,7 +21,7 @@ const wsLink =
 
 const uri = `${
   NEXT_PUBLIC_GRAPHQL_URI?.includes('localhost') ? 'http' : 'https'
-}://${NEXT_PUBLIC_GRAPHQL_URI}/graphql`;
+}://${NEXT_PUBLIC_GRAPHQL_URI}/graphql` as string;
 
 const httpLink = new HttpLink({
   // uri: `http://localhost:4005/graphql`,
